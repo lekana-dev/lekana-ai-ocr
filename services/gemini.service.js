@@ -9,7 +9,7 @@ const axios = require("axios");
 // Initialize Gemini client
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({
-  model: "gemini-2.5-flash-preview-09-2025",
+  model: "gemini-3.0-flash",
 });
 
 // ============================================
@@ -175,12 +175,12 @@ async function refineExtraction({
     promptText = buildFieldExtractPrompt(
       ocrText,
       targetFields || [],
-      customPrompts
+      customPrompts,
     );
     console.log(
       `[Gemini] Using field extraction mode for: ${(targetFields || []).join(
-        ", "
-      )}`
+        ", ",
+      )}`,
     );
   } else {
     // Mode 3: General text cleanup (auto/default)
@@ -207,7 +207,7 @@ async function refineExtraction({
 
     if (tokensUsed) {
       console.log(
-        `[Gemini] Token usage: ${tokensUsed.promptTokens} prompt + ${tokensUsed.completionTokens} completion = ${tokensUsed.totalTokens} total`
+        `[Gemini] Token usage: ${tokensUsed.promptTokens} prompt + ${tokensUsed.completionTokens} completion = ${tokensUsed.totalTokens} total`,
       );
     }
 
