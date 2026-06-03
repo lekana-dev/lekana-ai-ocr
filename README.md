@@ -53,6 +53,7 @@ DOCUMENT_AI_OCR_PROCESSOR_ID=your-ocr-processor-id
 
 # Gemini
 GEMINI_API_KEY=your-gemini-api-key
+GEMINI_MODEL=gemini-3-flash-preview
 ```
 
 ### Config Schema (ServiceRequest.config)

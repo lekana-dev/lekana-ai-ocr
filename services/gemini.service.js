@@ -8,8 +8,9 @@ const axios = require("axios");
 
 // Initialize Gemini client
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const geminiModel = process.env.GEMINI_MODEL || "gemini-3-flash-preview";
 const model = genAI.getGenerativeModel({
-  model: "gemini-3-flash-preview",
+  model: geminiModel,
 });
 
 // ============================================
