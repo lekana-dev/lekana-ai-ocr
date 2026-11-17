@@ -424,17 +424,23 @@ app.get(
 // ============================================
 // Start Server
 // ============================================
-app.listen(PORT, () => {
-  console.log(`OCR service running on port ${PORT}`);
-  console.log(
-    `Clerk Domain: ${
-      process.env.CLERK_DOMAIN || "teaching-bream-67.clerk.accounts.dev"
-    }`,
-  );
-  console.log(
-    `Document AI Project: ${process.env.DOCUMENT_AI_PROJECT_ID || "NOT SET"}`,
-  );
-  console.log(
-    `Gemini API: ${process.env.GEMINI_API_KEY ? "Configured" : "NOT SET"}`,
-  );
-});
+// Start a server only when run directly (node server.js).
+// On Vercel the app is imported by api/index.js and served as a function.
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`OCR service running on port ${PORT}`);
+    console.log(
+      `Clerk Domain: ${
+        process.env.CLERK_DOMAIN || "teaching-bream-67.clerk.accounts.dev"
+      }`,
+    );
+    console.log(
+      `Document AI Project: ${process.env.DOCUMENT_AI_PROJECT_ID || "NOT SET"}`,
+    );
+    console.log(
+      `Gemini API: ${process.env.GEMINI_API_KEY ? "Configured" : "NOT SET"}`,
+    );
+  });
+}
+
+module.exports = app;
